@@ -23,10 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('min-h-screen bg-white font-sans antialiased',fontSans.variable)}>
+      <body className={cn('min-h-screen bg-dark font-sans antialiased',fontSans.variable)}>
       <ThemeProvider
           attribute="class"
-          defaultTheme="white"
+          defaultTheme="dark"
           >
             {children}
           </ThemeProvider>
