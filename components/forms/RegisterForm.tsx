@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import {  z } from "zod";
 
 import { Form, FormControl } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
@@ -26,8 +26,7 @@ import CustomFormField, { FormFieldType } from "@/components/forms/CustomFormFie
 import { FileUploader } from "../FileUploader";
 import SubmitButton from "@/components/ui/SubmitButton";
 
-const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
-  const user = await getUser(userId);
+const RegisterForm = ({user}: {user: User}) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,13 +34,14 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
     resolver: zodResolver(PatientFormValidation),
     defaultValues: {
       ...PatientFormDefaultValues,
-      name: user.name,
-      email: user.email,
-      phone: user.phone,
+      name: user?.name,
+      email: user?.email,
+      phone: user?.phone,
     },
   });
 
   const onSubmit = async (values: z.infer<typeof PatientFormValidation>) => {
+    console.log(form.formState.errors);
     setIsLoading(true);
 
     // Store file info in form data as
@@ -120,7 +120,7 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
             fieldType={FormFieldType.INPUT}
             control={form.control}
             name="name"
-            placeholder="John Doe"
+            placeholder="Enter a Full name"
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"
           />
@@ -132,7 +132,7 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
               control={form.control}
               name="email"
               label="Email address"
-              placeholder="johndoe@gmail.com"
+              placeholder="Enter an Email"
               iconSrc="/assets/icons/email.svg"
               iconAlt="email"
             />
@@ -141,8 +141,8 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
               fieldType={FormFieldType.PHONE_INPUT}
               control={form.control}
               name="phone"
-              label="Phone Number"
-              placeholder="(555) 123-4567"
+              label="Mobile Number"
+              placeholder="Enter a Mobile Number"
             />
           </div>
 
@@ -153,6 +153,7 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
               control={form.control}
               name="birthDate"
               label="Date of birth"
+              placeholder="DD/MM/YYYY"
             />
 
             <CustomFormField
@@ -188,7 +189,7 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
               control={form.control}
               name="address"
               label="Address"
-              placeholder="14 street, New york, NY - 5101"
+              placeholder="Enter an Address"
             />
 
             <CustomFormField
@@ -196,7 +197,7 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
               control={form.control}
               name="occupation"
               label="Occupation"
-              placeholder=" Software Engineer"
+              placeholder="Enter an Occupation"
             />
           </div>
 
@@ -215,7 +216,7 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
               control={form.control}
               name="emergencyContactNumber"
               label="Emergency contact number"
-              placeholder="(555) 123-4567"
+              placeholder="Guardian's Mobile number"
             />
           </div>
         </section>
@@ -331,7 +332,7 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
             control={form.control}
             name="identificationNumber"
             label="Identification Number"
-            placeholder="123456789"
+            placeholder="Enter an Identification number"
           />
 
           <CustomFormField
@@ -376,7 +377,7 @@ const RegisterForm = ({ params: {userId} }: SearchParamProps ) => {
           />
         </section>
 
-        <SubmitButton isLoading={isLoading}>Submit and Continue</SubmitButton>
+        <SubmitButton isLoading={isLoading} >Submit</SubmitButton>
       </form>
     </Form>
   );

@@ -1,6 +1,5 @@
-import AppointmentForm from "@/components/forms/PatientForm";
+import AppointmentForm from "@/components/forms/AppointmentForm";
 import { getPatient } from "@/lib/actions/patient.actions";
-import { SearchParamProps } from "@/Types";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -21,9 +20,9 @@ export default async function NewAppointment({params: {userId}}:SearchParamProps
           < AppointmentForm
           type="create"
           userId={userId}
-          patientId={patient.$id}
+          patientId={patient?.$id}
            />
-           <p className="justify-items-end text-dark-600 xl:text-left">
+           <p className="copyright mt-10 py-12">
            © 2024 Health+
            </p>
           
