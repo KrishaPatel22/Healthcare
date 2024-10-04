@@ -56,27 +56,27 @@ export const Doctors = [
   },
   {
     image: "/assets/images/dr-livingston.png",
-    name: "David Livingston",
+    name: "Venkatesh Iyer",
   },
   {
     image: "/assets/images/dr-peter.png",
-    name: "Evan Peter",
+    name: "Dipak Patel",
   },
   {
     image: "/assets/images/dr-powell.png",
-    name: "Jane Powell",
+    name: "Shivani Joshi",
   },
   {
     image: "/assets/images/dr-remirez.png",
-    name: "Alex Ramirez",
+    name: "Pratik Parmar",
   },
   {
     image: "/assets/images/dr-lee.png",
-    name: "Jasmine Lee",
+    name: "Richa Garg",
   },
   {
     image: "/assets/images/dr-cruz.png",
-    name: "Alyana Cruz",
+    name: "Jane Green",
   },
   {
     image: "/assets/images/dr-sharma.png",
